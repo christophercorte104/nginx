@@ -2,14 +2,32 @@ pipeline {
     agent any
 
     environment {
-
+        DOCKER_REGISTRY='registry.mywebsite.com'
     }
 
     stages {
+        stage('optimized code') {
+            steps {
+                echo "building optimized code..."
+            }
+        }
 
+        stage('test code') {
+            steps {
+                echo "testing optimized code..."
+            }
+        }
+
+        stage('build docker image') {
+            steps {
+                echo "building docker image..."
+            }
+        }
     }
 
     post {
-        
+        always {
+            echo "all done"
+        }
     }
 }
